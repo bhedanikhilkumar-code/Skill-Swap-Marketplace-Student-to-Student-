@@ -10,10 +10,13 @@ export const env = {
   accessTtl: process.env.ACCESS_TOKEN_TTL || '15m',
   refreshTtl: process.env.REFRESH_TOKEN_TTL || '7d',
   corsOrigin: process.env.CORS_ORIGIN || '*',
+  apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:5000',
   cloudinaryName: process.env.CLOUDINARY_CLOUD_NAME,
   cloudinaryKey: process.env.CLOUDINARY_API_KEY,
   cloudinarySecret: process.env.CLOUDINARY_API_SECRET,
   firebaseProjectId: process.env.FIREBASE_PROJECT_ID,
   firebaseClientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-  firebasePrivateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+  firebasePrivateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+  githubClientId: process.env.GITHUB_CLIENT_ID || '',
+  githubClientSecret: process.env.GITHUB_CLIENT_SECRET || ''
 };

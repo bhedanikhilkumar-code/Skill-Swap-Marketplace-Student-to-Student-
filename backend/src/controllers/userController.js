@@ -16,6 +16,7 @@ const rankUsers = (viewer, users) =>
       const bBoost = b.boostedUntil && new Date(b.boostedUntil) > new Date() ? 1 : 0;
       if (b.isVerified !== a.isVerified) return Number(b.isVerified) - Number(a.isVerified);
       if (bBoost !== aBoost) return bBoost - aBoost;
+      if (b.matchScore !== a.matchScore) return b.matchScore - a.matchScore;
       return (b.ratingAverage || 0) - (a.ratingAverage || 0);
     });
 

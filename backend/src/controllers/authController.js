@@ -4,12 +4,30 @@ import { signAccessToken, signRefreshToken, verifyRefreshToken } from '../utils/
 import { success, fail } from '../utils/response.js';
 
 const tokenPayload = (u) => ({ id: u._id.toString(), email: u.email, role: u.role });
+const makeReferralCode = (name) => `${(name || 'USER').replace(/[^a-zA-Z]/g, '').slice(0, 4).toUpperCase()}${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
 
 export const register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, referralCode } = req.body;
   const exists = await User.findOne({ email });
   if (exists) return fail(res, 'Email already in use', null, 409);
-  const user = await User.create({ name, email, passwordHash: await bcrypt.hash(password, 10) });
+
+  const user = await User.create({
+    name,
+    email,
+    passwordHash: await bcrypt.hash(password, 10),
+    referralCode: makeReferralCode(name)
+  });
+
+  if (referralCode) {
+    const referrer = await User.findOne({ referralCode: referralCode.toUpperCase() });
+    if (referrer && referrer._id.toString() !== user._id.toString()) {
+      user.referredBy = referrer._id;
+      referrer.referralStats.invites = (referrer.referralStats.invites || 0) + 1;
+      await referrer.save();
+      await user.save();
+    }
+  }
+
   return success(res, { id: user._id, email: user.email }, 'Registered', 201);
 };
 

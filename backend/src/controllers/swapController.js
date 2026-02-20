@@ -8,8 +8,23 @@ const blockedByCooldown = (user) => user?.cooldownUntil && new Date(user.cooldow
 export const createSwap = async (req, res) => {
   const me = await User.findById(req.user.id);
   if (blockedByCooldown(me)) return fail(res, 'You are in cooldown due to no-show strikes. Try again later.', null, 403);
+  if (req.body.clientRequestId) {
+    const existing = await Swap.findOne({ fromUser: req.user.id, clientRequestId: req.body.clientRequestId });
+    if (existing) return success(res, existing, 'Idempotent swap returned', 200);
+  }
+  if (!req.body.requestedSkill && !req.body.requestedBundleId) return fail(res, 'Provide requestedSkill or requestedBundleId', null, 400);
+  if (!req.body.offeredSkill && !req.body.offeredBundleId) return fail(res, 'Provide offeredSkill or offeredBundleId', null, 400);
   const payload = { ...req.body, fromUser: req.user.id };
   const swap = await Swap.create(payload);
+
+  const today = new Date().toISOString().slice(0, 10);
+  if (me.dailySwapUsageDate !== today) {
+    me.dailySwapUsageDate = today;
+    me.dailySwapUsage = 0;
+  }
+  me.dailySwapUsage += 1;
+  await me.save();
+
   const toUser = await User.findById(req.body.toUser);
   await sendPush({ tokens: toUser?.deviceTokens || [], title: 'New Swap Request', body: 'You received a new swap request.' });
   return success(res, swap, 'Swap request created', 201);
