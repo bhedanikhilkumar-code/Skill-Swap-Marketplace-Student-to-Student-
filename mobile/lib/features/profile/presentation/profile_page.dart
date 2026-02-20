@@ -16,13 +16,43 @@ class ProfilePage extends ConsumerWidget {
       body: me.when(
         data: (u) => Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(u['name'] ?? '', style: Theme.of(context).textTheme.headlineSmall),
+          child: ListView(children: [
+            Row(children: [
+              Text(u['name'] ?? '', style: Theme.of(context).textTheme.headlineSmall),
+              if (u['isVerified'] == true) const Padding(padding: EdgeInsets.only(left: 6), child: Icon(Icons.verified, color: Colors.blue)),
+              if (u['isPremium'] == true) const Padding(padding: EdgeInsets.only(left: 6), child: Icon(Icons.workspace_premium, color: Colors.amber)),
+            ]),
             Text('${u['college'] ?? ''} • Year ${u['year'] ?? ''}'),
             const SizedBox(height: 8),
             Text(u['bio'] ?? ''),
             const SizedBox(height: 12),
-            Wrap(spacing: 8, children: (u['skillsOffered'] as List? ?? []).map((e) => SkillChip(label: e.toString())).toList())
+            Text('No-show strikes: ${u['noShowStrikes'] ?? 0}'),
+            Text('Cooldown until: ${u['cooldownUntil'] ?? '-'}'),
+            const SizedBox(height: 12),
+            const Text('Skills Offered'),
+            Wrap(
+              spacing: 8,
+              children: (u['skillsOffered'] as List? ?? [])
+                  .map((e) => SkillChip(label: '${e['name'] ?? e.toString()} (${e['level'] ?? ''})'))
+                  .toList(),
+            ),
+            const SizedBox(height: 8),
+            const Text('Skills Wanted'),
+            Wrap(
+              spacing: 8,
+              children: (u['skillsWanted'] as List? ?? [])
+                  .map((e) => SkillChip(label: '${e['name'] ?? e.toString()} (${e['levelWanted'] ?? ''})'))
+                  .toList(),
+            ),
+            const SizedBox(height: 8),
+            const Text('Portfolio'),
+            ...(u['portfolioLinks'] as List? ?? []).map((e) => ListTile(title: Text(e['type'] ?? 'OTHER'), subtitle: Text(e['url'] ?? ''))),
+            const SizedBox(height: 12),
+            ElevatedButton(onPressed: () => Navigator.pushNamed(context, '/verification'), child: const Text('Verification')),
+            ElevatedButton(onPressed: () => Navigator.pushNamed(context, '/premium'), child: const Text('Premium')),
+            ElevatedButton(onPressed: () => Navigator.pushNamed(context, '/wallet'), child: const Text('Wallet')),
+            ElevatedButton(onPressed: () => Navigator.pushNamed(context, '/referrals'), child: const Text('Referrals')),
+            if ((u['githubUsername'] ?? '').toString().isNotEmpty) Text('GitHub: @${u['githubUsername']} • repos ${u['githubSummary']?['publicRepos'] ?? 0} • followers ${u['githubSummary']?['followers'] ?? 0}'),
           ]),
         ),
         loading: () => const Center(child: CircularProgressIndicator()),

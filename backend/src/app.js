@@ -14,6 +14,16 @@ import sessionRoutes from './routes/sessionRoutes.js';
 import reviewRoutes from './routes/reviewRoutes.js';
 import safetyRoutes from './routes/safetyRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
+import verificationRoutes from './routes/verificationRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
+import premiumRoutes from './routes/premiumRoutes.js';
+import communityRoutes from './routes/communityRoutes.js';
+import bundleRoutes from './routes/bundleRoutes.js';
+import walletRoutes from './routes/walletRoutes.js';
+import disputeRoutes from './routes/disputeRoutes.js';
+import referralRoutes from './routes/referralRoutes.js';
+import oauthRoutes from './routes/oauthRoutes.js';
+import schedulingRoutes from './routes/schedulingRoutes.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { env } from './config/env.js';
 
@@ -36,6 +46,16 @@ app.use('/api/sessions', sessionRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api', safetyRoutes);
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/verification', verificationRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/premium', premiumRoutes);
+app.use('/api/communities', communityRoutes);
+app.use('/api/bundles', bundleRoutes);
+app.use('/api/wallet', walletRoutes);
+app.use('/api/disputes', disputeRoutes);
+app.use('/api/referrals', referralRoutes);
+app.use('/api/oauth', oauthRoutes);
+app.use('/api/scheduling', schedulingRoutes);
 
 app.use(errorHandler);
 

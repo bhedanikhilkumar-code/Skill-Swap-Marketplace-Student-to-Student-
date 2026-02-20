@@ -7,7 +7,9 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "test": "NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
-    "seed": "node src/scripts/seed.js"
+    "seed": "node src/scripts/seed.js",
+    "migrate": "node src/scripts/migrate_add_fields.js",
+    "migrate:v2": "node src/scripts/migrate_future_v2.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

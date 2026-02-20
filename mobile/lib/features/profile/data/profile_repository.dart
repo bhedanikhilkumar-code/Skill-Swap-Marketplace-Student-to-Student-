@@ -14,4 +14,20 @@ class ProfileRepository {
     final c = await ApiClient.create();
     await c.dio.patch('/users/me', data: body);
   }
+
+  Future<Map<String, dynamic>> getVerification() async {
+    final c = await ApiClient.create();
+    final res = await c.dio.get('/verification/me');
+    return res.data['data'];
+  }
+
+  Future<void> requestVerification({String? collegeEmail}) async {
+    final c = await ApiClient.create();
+    await c.dio.post('/verification/request', data: {'collegeEmail': collegeEmail});
+  }
+
+  Future<void> boostProfile() async {
+    final c = await ApiClient.create();
+    await c.dio.post('/premium/boost-profile');
+  }
 }

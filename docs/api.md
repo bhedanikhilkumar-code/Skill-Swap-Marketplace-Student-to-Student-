@@ -1,13 +1,64 @@
-# API Summary
+# API Reference (Future v2)
 
-Base URL: `http://localhost:5000/api`
+## Trust + Verification + Premium + Moderation
+- `POST /api/verification/request`
+- `GET /api/verification/me`
+- `PATCH /api/verification/:userId/approve` (admin)
+- `PATCH /api/verification/:userId/reject` (admin)
+- `GET /api/admin/reports` (admin)
+- `PATCH /api/admin/users/:id/ban|warn|shadowban` (admin)
+- `POST /api/premium/activate` (admin)
+- `POST /api/premium/boost-profile`
 
-- Auth: `/auth/register`, `/auth/login`, `/auth/refresh`, `/auth/logout`
-- Users: `/users/me`, `/users/:id`, `/users/search`
-- Uploads: `/uploads/avatar`
-- Swaps: `/swaps`, `/swaps/inbox`, `/swaps/sent`, `/swaps/:id`, `/swaps/:id/status`
-- Chats: `/chats/:swapId/messages`
-- Sessions: `/sessions`, `/sessions/upcoming`, `/sessions/:id`
-- Reviews: `/reviews`, `/reviews/user/:userId`
-- Safety: `/reports`, `/blocks`
-- Notifications: `/notifications/token`
+## Communities
+- `POST /api/communities`
+- `GET /api/communities?college=&q=&page=&limit=`
+- `POST /api/communities/:id/join`
+- `PATCH /api/communities/:id/members/:userId/role`
+- `POST /api/communities/:id/posts`
+- `GET /api/communities/:id/posts?page=&limit=`
+
+## Skill Bundles + Learning Paths
+- `POST /api/bundles`
+- `GET /api/bundles?search=&page=&limit=`
+- `GET /api/bundles/:id`
+- Swap supports `offeredSkill/requestedSkill` OR `offeredBundleId/requestedBundleId`.
+- Swap supports `milestones[]` and idempotency key `clientRequestId`.
+
+## Wallet
+- `GET /api/wallet/me`
+- `POST /api/wallet/grant` (admin)
+- `POST /api/wallet/lock` (admin/internal)
+- `POST /api/wallet/settle` (admin/internal)
+- Session scheduling locks minutes from both participants; attendance completion/cancel settles lock.
+
+## Disputes
+- `POST /api/disputes`
+- `GET /api/disputes/me`
+- `GET /api/admin/disputes` (admin)
+- `PATCH /api/admin/disputes/:id/resolve` body `{ verdict, adminNotes }`
+- `STRIKE_REVERSED` decreases strike and clears cooldown when strikes < 3.
+
+## Anti-spam + Safety
+- `GET /api/safety/limits`
+- Trust-score based daily swap limit: 5/10/20.
+
+## Scheduling + Calendar
+- `GET /api/scheduling/common-slots?userA=&userB=&weekStart=YYYY-MM-DD&timezone=`
+- `GET /api/scheduling/sessions/:id/ics`
+
+## GitHub OAuth (dev-friendly mock callback)
+- `GET /api/oauth/github/start`
+- `GET /api/oauth/github/callback`
+
+## Referrals
+- `GET /api/referrals/me`
+- `POST /api/referrals/apply { code }`
+- Successful referral completion reward: `+1 boostCredit` and `+60 wallet minutes`.
+
+## Realtime Calls (Socket.IO signaling)
+- `join-session-call`
+- `call:offer`
+- `call:answer`
+- `call:ice`
+- `call:end`

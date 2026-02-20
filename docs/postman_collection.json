@@ -1,38 +1,21 @@
 {
   "info": {
-    "name": "Skill Swap Marketplace API",
+    "name": "Skill Swap Marketplace API - Future v2",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
-    {
-      "name": "Register",
-      "request": {
-        "method": "POST",
-        "header": [{ "key": "Content-Type", "value": "application/json" }],
-        "url": { "raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"] },
-        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Alex Student\",\n  \"email\": \"alex@student.edu\",\n  \"password\": \"password123\"\n}" }
-      }
-    },
-    {
-      "name": "Login",
-      "request": {
-        "method": "POST",
-        "header": [{ "key": "Content-Type", "value": "application/json" }],
-        "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] },
-        "body": { "mode": "raw", "raw": "{\n  \"email\": \"alex@student.edu\",\n  \"password\": \"password123\"\n}" }
-      }
-    },
-    {
-      "name": "Search Users",
-      "request": {
-        "method": "GET",
-        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
-        "url": { "raw": "{{baseUrl}}/users/search?page=1&limit=10", "host": ["{{baseUrl}}"], "path": ["users", "search"], "query": [{"key":"page","value":"1"},{"key":"limit","value":"10"}] }
-      }
-    }
+    {"name":"Wallet Me","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/api/wallet/me"}},
+    {"name":"Create Community","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/api/communities","body":{"mode":"raw","raw":"{\n  \"name\":\"Design Circle\",\n  \"college\":\"MIT\",\n  \"description\":\"Peer design club\",\n  \"isPrivate\":false\n}"}}},
+    {"name":"List Communities","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/api/communities?page=1&limit=20"}},
+    {"name":"Create Bundle","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/api/bundles","body":{"mode":"raw","raw":"{\n  \"name\":\"Frontend Mastery\",\n  \"description\":\"React + UI path\",\n  \"skillsIncluded\":[{\"name\":\"React\",\"level\":\"INTERMEDIATE\"}]\n}"}}},
+    {"name":"Create Dispute","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/api/disputes","body":{"mode":"raw","raw":"{\n  \"sessionId\":\"{{sessionId}}\",\n  \"reason\":\"Attendance conflict\"\n}"}}},
+    {"name":"Admin Resolve Dispute","request":{"method":"PATCH","header":[{"key":"Authorization","value":"Bearer {{adminToken}}"},{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/api/admin/disputes/{{disputeId}}/resolve","body":{"mode":"raw","raw":"{\n  \"verdict\":\"STRIKE_REVERSED\",\n  \"adminNotes\":\"Evidence accepted\"\n}"}}},
+    {"name":"Referral Me","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/api/referrals/me"}},
+    {"name":"Apply Referral","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/api/referrals/apply","body":{"mode":"raw","raw":"{\n  \"code\":\"USER1REF\"\n}"}}},
+    {"name":"Safety Limits","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/api/safety/limits"}},
+    {"name":"Common Slots","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/api/scheduling/common-slots?userB={{userId}}&weekStart=2026-01-05&timezone=UTC"}},
+    {"name":"Session ICS","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/api/scheduling/sessions/{{sessionId}}/ics"}},
+    {"name":"GitHub OAuth Start","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/api/oauth/github/start"}}
   ],
-  "variable": [
-    { "key": "baseUrl", "value": "http://localhost:5000/api" },
-    { "key": "token", "value": "" }
-  ]
+  "variable":[{"key":"baseUrl","value":"http://localhost:5000"}]
 }

@@ -9,4 +9,9 @@ class SessionsRepository {
     final res = await c.dio.get('/sessions/upcoming');
     return res.data['data'];
   }
+
+  Future<void> markAttendance(String sessionId, String outcome) async {
+    final c = await ApiClient.create();
+    await c.dio.patch('/sessions/$sessionId/attendance', data: {'outcome': outcome});
+  }
 }
