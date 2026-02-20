@@ -11,13 +11,13 @@ class AuthRepository {
     await client.dio.post('/auth/register', data: {'name': name, 'email': email, 'password': password});
   }
 
-  Future<String> login(String email, String password) async {
+  Future<Map<String, String>> login(String email, String password) async {
     final client = await ApiClient.create();
     final res = await client.dio.post('/auth/login', data: {'email': email, 'password': password});
     final data = res.data['data'];
     await secureStorage.write(key: AppConstants.tokenKey, value: data['accessToken']);
     await secureStorage.write(key: AppConstants.refreshTokenKey, value: data['refreshToken']);
-    return data['userId'];
+    return {'userId': data['userId'], 'role': data['role'] ?? 'USER'};
   }
 
   Future<void> logout() async {

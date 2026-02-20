@@ -10,8 +10,8 @@ class AuthController extends StateNotifier<AuthState> {
 
   Future<void> login(String email, String password) async {
     state = state.copyWith(loading: true);
-    final userId = await ref.read(authRepositoryProvider).login(email, password);
-    state = AuthState(userId: userId, loading: false);
+    final authData = await ref.read(authRepositoryProvider).login(email, password);
+    state = AuthState(userId: authData['userId'], role: authData['role'] ?? 'USER', loading: false);
   }
 
   Future<void> register(String name, String email, String password) => ref.read(authRepositoryProvider).register(name, email, password);

@@ -1,16 +1,25 @@
-# Architecture
+# Architecture Updates
 
-## Monorepo
-- `backend`: Express + MongoDB + Socket.IO + FCM + Cloudinary
-- `mobile`: Flutter + Riverpod + Dio + go_router + secure storage
+## Backend
+- Added role-based access with `USER` / `ADMIN`.
+- Added trust models: verification and premium metadata on `User`.
+- Added moderation model nested under `User.moderation`.
+- Added accountability model: strikes/cooldown and enhanced `Session` attendance state machine.
+- Discovery endpoints now rank with match score, verification, boosts, and rating.
 
-## Backend Layers
-- routes -> controllers -> services/models -> utils
-- Centralized JSON error format `{ success:false, message, errors? }`
+### New Modules
+- `controllers/verificationController.js`
+- `controllers/adminController.js`
+- `controllers/premiumController.js`
+- `routes/verificationRoutes.js`
+- `routes/adminRoutes.js`
+- `routes/premiumRoutes.js`
+- `scripts/migrate_add_fields.js`
 
-## Mobile Layers
-- `core`: networking, theme, router, storage
-- `features/*`: `data/domain/presentation`
-
-## Realtime
-- Socket.IO rooms: `swap:<swapId>` joined only for accepted swaps.
+## Mobile
+- Feed upgraded with Recommended + Nearby/College tabs.
+- User cards show verified/premium badges and match reasons.
+- Profile shows strikes/cooldown + portfolio + leveled skills.
+- Added Verification and Premium screens.
+- Added lightweight Admin screen gated by role.
+- Sessions UI now supports attendance actions.

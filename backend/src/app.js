@@ -14,6 +14,9 @@ import sessionRoutes from './routes/sessionRoutes.js';
 import reviewRoutes from './routes/reviewRoutes.js';
 import safetyRoutes from './routes/safetyRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
+import verificationRoutes from './routes/verificationRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
+import premiumRoutes from './routes/premiumRoutes.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { env } from './config/env.js';
 
@@ -36,6 +39,9 @@ app.use('/api/sessions', sessionRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api', safetyRoutes);
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/verification', verificationRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/premium', premiumRoutes);
 
 app.use(errorHandler);
 

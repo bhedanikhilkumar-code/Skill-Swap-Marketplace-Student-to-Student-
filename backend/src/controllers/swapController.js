@@ -3,7 +3,11 @@ import User from '../models/User.js';
 import { success, fail } from '../utils/response.js';
 import { sendPush } from '../services/notificationService.js';
 
+const blockedByCooldown = (user) => user?.cooldownUntil && new Date(user.cooldownUntil) > new Date();
+
 export const createSwap = async (req, res) => {
+  const me = await User.findById(req.user.id);
+  if (blockedByCooldown(me)) return fail(res, 'You are in cooldown due to no-show strikes. Try again later.', null, 403);
   const payload = { ...req.body, fromUser: req.user.id };
   const swap = await Swap.create(payload);
   const toUser = await User.findById(req.body.toUser);
