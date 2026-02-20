@@ -10,4 +10,10 @@ class MarketplaceRepository {
     final res = await c.dio.get('/users/search', queryParameters: {'skillTag': skillTag, 'college': college, 'page': 1, 'limit': 20});
     return (res.data['data']['items'] as List).map((e) => UserProfile.fromJson(e)).toList();
   }
+
+  Future<List<UserProfile>> fetchRecommended() async {
+    final c = await ApiClient.create();
+    final res = await c.dio.get('/users/recommended', queryParameters: {'page': 1, 'limit': 20});
+    return (res.data['data']['items'] as List).map((e) => UserProfile.fromJson(e)).toList();
+  }
 }

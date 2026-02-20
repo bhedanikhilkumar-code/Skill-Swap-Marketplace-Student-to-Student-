@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { createSwap, getSwap, inbox, sent, updateStatus } from '../controllers/swapController.js';
-import { auth } from '../middlewares/auth.js';
+import { auth, requireActiveUser } from '../middlewares/auth.js';
 import { validate } from '../middlewares/validate.js';
 import { swapSchema } from '../utils/schemas.js';
 
 const r = Router();
-r.use(auth);
+r.use(auth, requireActiveUser);
 r.post('/', validate(swapSchema), createSwap);
 r.get('/inbox', inbox);
 r.get('/sent', sent);
