@@ -37,6 +37,12 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(path: '/admin', builder: (_, __) => const AdminPage()),
       GoRoute(path: '/chat', builder: (_, state) => ChatPage(swapId: state.extra as String)),
       GoRoute(path: '/call', builder: (_, state) => CallPage(sessionId: state.extra as String)),
+      GoRoute(path: '/notifications', builder: (_, __) => const NotificationPermissionPage()),
+      GoRoute(path: '/admin', builder: (_, __) => const AdminPage()),
+      GoRoute(
+        path: '/chat',
+        builder: (_, state) => ChatPage(swapId: state.extra as String),
+      ),
     ],
   );
 });
@@ -63,6 +69,7 @@ class _HomeShellState extends ConsumerState<HomeShell> {
       const ProfilePage(),
       if (auth.isAdmin) const AdminPage()
     ];
+    final tabs = [const MarketplacePage(), const SwapsPage(), const SessionsPage(), const ProfilePage(), if (auth.isAdmin) const AdminPage()];
 
     return Scaffold(
       body: tabs[idx],

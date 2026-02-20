@@ -57,6 +57,8 @@ export const markAttendance = async (req, res) => {
   } else if (outcome === 'CANCELLED') {
     session.status = 'CANCELLED';
     await settleWalletInternal({ userIds: participants, minutes: session.durationMinutes });
+  } else if (outcome === 'CANCELLED') {
+    session.status = 'CANCELLED';
   } else {
     if (session.strikeApplied) return fail(res, 'No-show already recorded for this session.', null, 409);
     const reportedUserId = swap.fromUser.toString() === req.user.id ? swap.toUser.toString() : swap.fromUser.toString();

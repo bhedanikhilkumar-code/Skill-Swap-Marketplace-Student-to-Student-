@@ -13,6 +13,9 @@ const pickMany = (arr, count) => [...new Set(Array.from({ length: count }, () =>
 const offered = (arr) => arr.map((name, idx) => ({ name, level: ['BEGINNER', 'INTERMEDIATE', 'ADVANCED'][idx % 3] }));
 const wanted = (arr) => arr.map((name, idx) => ({ name, levelWanted: ['ANY', 'BEGINNER', 'INTERMEDIATE', 'ADVANCED'][idx % 4] }));
 
+const offered = (arr) => arr.map((name, idx) => ({ name, level: ['BEGINNER', 'INTERMEDIATE', 'ADVANCED'][idx % 3] }));
+const wanted = (arr) => arr.map((name, idx) => ({ name, levelWanted: ['ANY', 'BEGINNER', 'INTERMEDIATE', 'ADVANCED'][idx % 4] }));
+
 await connectDb();
 await User.deleteMany({ email: /demo\d+@|admin\d+@/ });
 await Community.deleteMany({});
@@ -42,6 +45,24 @@ for (let i = 1; i <= 15; i += 1) {
   const wantedSkills = pickMany(skills, 3);
   const referredBy = i > 10 ? admins[0]._id : undefined;
   const user = await User.create({
+
+for (let i = 1; i <= 2; i += 1) {
+  await User.create({
+    name: `Admin ${i}`,
+    email: `admin${i}@student.edu`,
+    passwordHash: await bcrypt.hash('password123', 10),
+    role: 'ADMIN',
+    college: pick(colleges),
+    isVerified: true,
+    verificationStatus: 'APPROVED',
+    verifiedAt: new Date()
+  });
+}
+
+for (let i = 1; i <= 10; i += 1) {
+  const offeredSkills = pickMany(skills, 3);
+  const wantedSkills = pickMany(skills, 3);
+  await User.create({
     name: `Demo User ${i}`,
     email: `demo${i}@student.edu`,
     passwordHash: await bcrypt.hash('password123', 10),
@@ -87,10 +108,13 @@ for (let i = 1; i <= 3; i += 1) {
     description: 'College skill circle',
     isPrivate: i === 3,
     createdBy: admins[0]._id
+    noShowStrikes: i === 9 ? 3 : i === 8 ? 2 : 0,
+    cooldownUntil: i === 9 ? new Date(Date.now() + 5 * 24 * 60 * 60 * 1000) : undefined
   });
   await CommunityMember.create({ communityId: c._id, userId: admins[0]._id, role: 'ADMIN', joinStatus: 'APPROVED' });
   await CommunityMember.create({ communityId: c._id, userId: users[i]._id, role: 'MEMBER', joinStatus: c.isPrivate ? 'PENDING' : 'APPROVED' });
 }
 
 console.log('Seeded 2 admins, 15 users, 3 communities, and 5 bundles with wallet/referral data');
+console.log('Seeded demo users including admins, verified, premium, and strike scenarios');
 process.exit(0);

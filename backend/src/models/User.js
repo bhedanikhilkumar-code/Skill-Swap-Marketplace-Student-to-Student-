@@ -61,6 +61,41 @@ const githubSummarySchema = new mongoose.Schema(
   { _id: false }
 );
 
+const portfolioLinkSchema = new mongoose.Schema(
+  {
+    type: { type: String, enum: ['GITHUB', 'BEHANCE', 'LINKEDIN', 'OTHER'], required: true },
+    url: { type: String, required: true }
+  },
+  { _id: false }
+);
+
+const offeredSkillSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    level: { type: String, enum: ['BEGINNER', 'INTERMEDIATE', 'ADVANCED'], default: 'BEGINNER' }
+  },
+  { _id: false }
+);
+
+const wantedSkillSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    levelWanted: { type: String, enum: ['ANY', 'BEGINNER', 'INTERMEDIATE', 'ADVANCED'], default: 'ANY' }
+  },
+  { _id: false }
+);
+
+const moderationSchema = new mongoose.Schema(
+  {
+    isBanned: { type: Boolean, default: false },
+    banReason: { type: String, default: '' },
+    warnedCount: { type: Number, default: 0 },
+    isShadowBanned: { type: Boolean, default: false },
+    updatedAt: { type: Date }
+  },
+  { _id: false }
+);
+
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },

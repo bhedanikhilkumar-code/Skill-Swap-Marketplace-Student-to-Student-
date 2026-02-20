@@ -18,4 +18,15 @@
     {"name":"GitHub OAuth Start","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/api/oauth/github/start"}}
   ],
   "variable":[{"key":"baseUrl","value":"http://localhost:5000"}]
+    {"name": "Auth Login", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/api/auth/login", "body": {"mode": "raw", "raw": "{\n  \"email\": \"demo1@student.edu\",\n  \"password\": \"password123\"\n}"}}},
+    {"name": "Verification Request", "request": {"method": "POST", "header": [{"key": "Authorization", "value": "Bearer {{token}}"}], "url": "{{baseUrl}}/api/verification/request", "body": {"mode": "raw", "raw": "{\n  \"collegeEmail\": \"user@college.edu\"\n}"}}},
+    {"name": "Approve Verification", "request": {"method": "PATCH", "header": [{"key": "Authorization", "value": "Bearer {{adminToken}}"}], "url": "{{baseUrl}}/api/verification/{{userId}}/approve"}},
+    {"name": "Admin Reports", "request": {"method": "GET", "header": [{"key": "Authorization", "value": "Bearer {{adminToken}}"}], "url": "{{baseUrl}}/api/admin/reports?page=1&limit=20"}},
+    {"name": "Ban User", "request": {"method": "PATCH", "header": [{"key": "Authorization", "value": "Bearer {{adminToken}}"}, {"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/api/admin/users/{{userId}}/ban", "body": {"mode": "raw", "raw": "{\n  \"reason\": \"Repeated abuse\"\n}"}}},
+    {"name": "Mark Attendance No-show", "request": {"method": "PATCH", "header": [{"key": "Authorization", "value": "Bearer {{token}}"}, {"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/api/sessions/{{sessionId}}/attendance", "body": {"mode": "raw", "raw": "{\n  \"outcome\": \"NO_SHOW_OTHER\"\n}"}}},
+    {"name": "Recommended Users", "request": {"method": "GET", "header": [{"key": "Authorization", "value": "Bearer {{token}}"}], "url": "{{baseUrl}}/api/users/recommended?page=1&limit=20"}},
+    {"name": "Activate Premium", "request": {"method": "POST", "header": [{"key": "Authorization", "value": "Bearer {{adminToken}}"}, {"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/api/premium/activate", "body": {"mode": "raw", "raw": "{\n  \"userId\": \"{{userId}}\"\n}"}}},
+    {"name": "Boost Profile", "request": {"method": "POST", "header": [{"key": "Authorization", "value": "Bearer {{token}}"}], "url": "{{baseUrl}}/api/premium/boost-profile"}}
+  ],
+  "variable": [{"key": "baseUrl", "value": "http://localhost:4000"}]
 }

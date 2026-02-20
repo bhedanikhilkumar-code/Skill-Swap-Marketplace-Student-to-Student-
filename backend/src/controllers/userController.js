@@ -11,6 +11,7 @@ const rankUsers = (viewer, users) =>
       return { ...u.toObject(), matchScore, reasons };
     })
     .sort((a, b) => {
+      if (b.matchScore !== a.matchScore) return b.matchScore - a.matchScore;
       const aBoost = a.boostedUntil && new Date(a.boostedUntil) > new Date() ? 1 : 0;
       const bBoost = b.boostedUntil && new Date(b.boostedUntil) > new Date() ? 1 : 0;
       if (b.isVerified !== a.isVerified) return Number(b.isVerified) - Number(a.isVerified);

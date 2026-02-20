@@ -8,6 +8,7 @@ import { swapSchema } from '../utils/schemas.js';
 const r = Router();
 r.use(auth, requireActiveUser);
 r.post('/', requestLimiterByUser, validate(swapSchema), createSwap);
+r.post('/', validate(swapSchema), createSwap);
 r.get('/inbox', inbox);
 r.get('/sent', sent);
 r.get('/:id', getSwap);
