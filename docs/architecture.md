@@ -1,47 +1,80 @@
-# Architecture Updates (Future v2)
+# Architecture — Skill Swap Marketplace Student To Student
 
-## Added Backend Domains
-- Communities: `Community`, `CommunityMember`, `CommunityPost`.
-- Learning paths: `SkillBundle`, swap milestones, idempotent swap requests.
-- Time-credit wallet: user balance + lock, lock/settle hooks integrated with sessions.
-- Disputes: dispute record with evidence, verdict, and audit log.
-- Anti-spam: trust score snapshot + request limiter + safety limits endpoint.
-- Scheduling: common slots computation + ICS export.
-- OAuth: GitHub link flow (dev-friendly callback mock).
-- Referrals: code, attribution, and reward settlement on first completion.
-- RTC signaling: Socket.IO call events per `sessionId` room.
+## Purpose
 
-## Existing Layers Preserved
-- JWT auth middleware, role checks, response shape, MongoDB models/controllers/routes pattern.
-- Mobile app remains Riverpod + go_router architecture with incremental feature screens.
+Student-to-student skill exchange marketplace concept for learning, collaboration, and peer support.
 
-## Migration Strategy
-- Script-based migrations in `backend/src/scripts`:
-  - `migrate_add_fields.js`
-  - `migrate_future_v2.js`
-- Safe defaults are backfilled and legacy arrays are normalized.
-# Architecture Updates
+This document explains the project from an engineering-review perspective: layers, workflow, data/state movement, and extension points.
 
-## Backend
-- Added role-based access with `USER` / `ADMIN`.
-- Added trust models: verification and premium metadata on `User`.
-- Added moderation model nested under `User.moderation`.
-- Added accountability model: strikes/cooldown and enhanced `Session` attendance state machine.
-- Discovery endpoints now rank with match score, verification, boosts, and rating.
+## System Context
 
-### New Modules
-- `controllers/verificationController.js`
-- `controllers/adminController.js`
-- `controllers/premiumController.js`
-- `routes/verificationRoutes.js`
-- `routes/adminRoutes.js`
-- `routes/premiumRoutes.js`
-- `scripts/migrate_add_fields.js`
+```mermaid
+flowchart LR
+    User[User / Reviewer] --> Interface[Project Interface]
+    Interface --> Logic[Application Logic]
+    Logic --> Data[Data / Device / File Layer]
+    Logic --> Output[UI, Report, Generated Asset, or Action]
+    Output --> User
+```
 
-## Mobile
-- Feed upgraded with Recommended + Nearby/College tabs.
-- User cards show verified/premium badges and match reasons.
-- Profile shows strikes/cooldown + portfolio + leveled skills.
-- Added Verification and Premium screens.
-- Added lightweight Admin screen gated by role.
-- Sessions UI now supports attendance actions.
+## Primary Workflow
+
+```mermaid
+flowchart TD
+    A[Start workflow] --> B[Process request]
+    B --> C[Persist or display result]
+    C --> D[Iterate with improvements]
+    D --> E[Document, test, and improve]
+```
+
+## Layered Design
+
+| Layer | Responsibility | Review Focus |
+| --- | --- | --- |
+| Interface | Screens, pages, commands, forms, or hardware entry points | Is the user flow clear and easy to demo? |
+| State / Logic | Validation, calculations, orchestration, and workflow rules | Is behavior predictable and maintainable? |
+| Data / Services | Local storage, API calls, generated files, device APIs, or models | Is data handled safely and consistently? |
+| Presentation | README, diagrams, screenshots, and demo notes | Can someone understand the project quickly? |
+| Quality | Tests, linting, review checklist, and roadmap | Can the project grow without becoming messy? |
+
+## Technology Profile
+
+| Category | Value |
+| --- | --- |
+| Primary stack | JavaScript |
+| Repository type | Public portfolio |
+| GitHub topics | collaboration, marketplace, students, web-app |
+
+## Data / State Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant I as Interface
+    participant L as Logic
+    participant D as Data/Device Layer
+    U->>I: Start main workflow
+    I->>L: Send validated intent
+    L->>D: Read/write required state
+    D-->>L: Return result
+    L-->>I: Prepare display/output
+    I-->>U: Show final state
+```
+
+## Extension Points
+
+- Add screenshots or demo GIFs for the most important workflow.
+- Add automated checks that match the stack.
+- Add environment documentation if external services are used.
+- Add test fixtures or sample data for repeatable demos.
+- Convert roadmap items into small, reviewable issues.
+
+## Engineering Review Notes
+
+A strong reviewer should be able to answer:
+
+1. What problem does this project solve?
+2. What is the main user workflow?
+3. Which files/layers own the core behavior?
+4. What tradeoffs are documented?
+5. What would be the next professional improvement?
