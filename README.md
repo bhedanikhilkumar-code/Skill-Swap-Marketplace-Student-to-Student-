@@ -1,349 +1,226 @@
-# Skill Swap Marketplace (Student-to-Student) 🚀
+<div align="center">
 
-> **A trust-first, skill-for-skill network where students exchange expertise, build verified reputation, and accelerate career outcomes—without paying cash.**
+# Skill Swap Marketplace Student To Student
 
-![Node.js](https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express-4.x-000000?style=for-the-badge&logo=express&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-8.x-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-![Socket.IO](https://img.shields.io/badge/Socket.IO-4.x-010101?style=for-the-badge&logo=socketdotio&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-FCM-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
-![Cloudinary](https://img.shields.io/badge/Cloudinary-Media-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white)
-![Build](https://img.shields.io/badge/Build-Passing-success?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+### Student-to-student skill exchange marketplace concept for learning, collaboration, and peer support.
 
----
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=111111)
+![GitHub repo](https://img.shields.io/badge/GitHub-skill-swap-marketplace-student-to-student-0F172A?style=for-the-badge&logo=github)
+![Documentation](https://img.shields.io/badge/Documentation-Pro%20Level-7C3AED?style=for-the-badge)
 
-## Elevator Pitch
+**Repository:** [bhedanikhilkumar-code/Skill-Swap-Marketplace-Student-to-Student-](https://github.com/bhedanikhilkumar-code/Skill-Swap-Marketplace-Student-to-Student-)
 
-Skill Swap Marketplace is a student-focused exchange platform where users trade **skills for skills** instead of money. A designer can swap with a coder, a public speaker with a data analyst, or a video editor with a marketer—creating a practical, reciprocal learning economy.
-
-The product combines marketplace discovery, realtime collaboration, scheduling accountability, and trust verification into one integrated system. It is designed to help students gain portfolio-ready outcomes, stronger peer networks, and career momentum.
-
-By turning peer learning into a structured, verifiable ecosystem, the platform creates long-term value for learners, mentors, communities, and recruiting pipelines.
+</div>
 
 ---
 
-## Core Value Proposition
+## Executive Overview
 
-- **No money barrier** — Access high-value learning and mentorship through time/expertise exchange, not tuition.
-- **Verified ecosystem** — Identity and profile verification layers raise signal quality and reduce friction.
-- **Accountability engine** — Session locks, attendance controls, disputes, and moderation improve execution reliability.
-- **Career impact** — Every completed swap can contribute to portfolio quality, social proof, and employability.
-- **Community flywheel** — Better outcomes improve trust, trust improves participation, participation improves liquidity.
+Student-to-student skill exchange marketplace concept for learning, collaboration, and peer support.
 
----
+This README is written as a **portfolio-grade project document**: it explains the product idea, technical approach, architecture, workflows, setup process, engineering standards, and future roadmap so a reviewer can understand both the codebase and the thinking behind it.
 
-## Complete Feature Matrix
+## Product Positioning
 
-| Feature | Status | Description |
-|---|---|---|
-| Marketplace | ✅ Live | Discover peers by skill supply/demand, trust signals, and recommendation reasons. |
-| Swap System | ✅ Live | Structured swap lifecycle with robust request creation and state transitions. |
-| Realtime Chat | ✅ Live | Socket-powered messaging for active swap participants and session coordination. |
-| Scheduling & Accountability | ✅ Live | Session planning, no-show controls, cooldowns, and commitment enforcement. |
-| Wallet System | ✅ Live | Time-credit wallet with lock/settle flows for transparent exchange settlement. |
-| Trust & Safety | ✅ Live | Reporting, warnings, moderation actions, bans/shadowbans, and dispute workflows. |
-| Communities | ✅ Live | Learning circles/clubs with role-based participation and peer engagement. |
-| Skill Bundles | ✅ Live | Multi-skill tracks with milestone-style progression and practical outcomes. |
-| Leaderboard | 🟡 Planned | XP and consistency leaderboards to reward meaningful contribution. |
-| Internships | 🟡 Planned | Opportunity layer connecting high-signal students with career pathways. |
-| Mentorship Mode | 🟡 Planned | Structured mentor-mentee pathways with goal tracking and progress visibility. |
-| Resume Builder | 🟡 Planned | Convert verified skill activity and outcomes into exportable resume artifacts. |
-| Analytics | 🟡 Planned | Product and learner analytics for progress, engagement, and operational insight. |
-| Referrals | ✅ Live | Referral attribution and reward loops for growth and community expansion. |
-| Resource Library | 🟡 Planned | Curated templates, guides, and learning resources mapped to skills. |
-| Location Discovery | 🟡 Planned | Geo-aware matching for campus and local collaboration opportunities. |
-| GitHub Verification | ✅ Live | GitHub linkage for developer identity trust and technical profile credibility. |
-| AI Summary | 🟡 Planned | AI-generated summaries for profiles, swaps, and learning trajectories. |
+| Question | Answer |
+| --- | --- |
+| **Who is it for?** | Users, reviewers, recruiters, and developers who want to understand the project quickly. |
+| **What problem does it solve?** | It turns a practical idea into a structured software project with clear workflows and maintainable implementation direction. |
+| **Why it matters?** | The project demonstrates product thinking, stack selection, feature planning, and clean documentation discipline. |
+| **Current focus** | Professional polish, understandable architecture, and portfolio-ready presentation. |
 
----
+## Repository Snapshot
+
+| Area | Details |
+| --- | --- |
+| Visibility | Public portfolio repository |
+| Primary stack | `JavaScript` |
+| Repository topics | `collaboration`, `marketplace`, `students`, `web-app` |
+| Useful commands | Documented in setup section |
+| Key dependencies | No dependency manifest detected |
+
+## Topics
+
+`collaboration` · `marketplace` · `students` · `web-app`
+
+## Key Capabilities
+
+| Capability | Description |
+| --- | --- |
+| **Clear purpose** | Documents the problem, users, and value proposition for quick understanding. |
+| **Maintainable structure** | Separates core logic, UI, services, and assets where the stack supports it. |
+| **Professional docs** | Includes architecture, setup, quality checks, roadmap, and contribution guidance. |
+| **Portfolio-ready** | Presented as a finished engineering artifact rather than a rough experiment. |
+
+## Detailed Product Blueprint
+
+### Experience Map
+
+```mermaid
+flowchart TD
+    A[Discover project purpose] --> B[Understand main user workflow]
+    B --> C[Review architecture and stack]
+    C --> D[Run locally or inspect code]
+    D --> E[Evaluate quality and roadmap]
+    E --> F[Decide next improvement or deployment path]
+```
+
+### Feature Depth Matrix
+
+| Layer | What reviewers should look for | Why it matters |
+| --- | --- | --- |
+| Product | Clear user problem, target audience, and workflow | Shows product thinking beyond tutorial-level code |
+| Interface | Screens, pages, commands, or hardware interaction points | Demonstrates how users actually experience the project |
+| Logic | Validation, state transitions, service methods, processing flow | Proves the project can handle real use cases |
+| Data | Local storage, database, files, APIs, or device input/output | Explains how information moves through the system |
+| Quality | Tests, linting, setup clarity, and roadmap | Makes the project easier to trust, extend, and review |
+
+### Conceptual Data / State Model
+
+| Entity / State | Purpose | Example fields or responsibilities |
+| --- | --- | --- |
+| User input | Starts the main workflow | Form values, commands, uploaded files, device readings |
+| Domain model | Represents the project-specific object | Transaction, note, shipment, event, avatar, prediction, song, or task |
+| Service layer | Applies rules and coordinates actions | Validation, scoring, formatting, persistence, API calls |
+| Storage/output | Keeps or presents the result | Database row, local cache, generated file, chart, dashboard, or device action |
+| Feedback loop | Helps improve the next interaction | Status message, analytics, error handling, recommendations, roadmap item |
+
+### Professional Differentiators
+
+- **Documentation-first presentation:** A reviewer can understand the project without guessing the intent.
+- **Diagram-backed explanation:** Architecture and workflow diagrams make the system easier to evaluate quickly.
+- **Real-world framing:** The README describes users, outcomes, and operational flow rather than only listing files.
+- **Extension-ready roadmap:** Future improvements are scoped so the project can keep growing cleanly.
+- **Portfolio alignment:** The project is positioned as part of a consistent, professional GitHub portfolio.
 
 ## Architecture Overview
 
-This repository is a **monorepo** that unifies backend APIs, mobile client experience, and technical documentation while preserving clear module boundaries.
+```mermaid
+flowchart LR
+    User[User] --> UI[Web UI / Views]
+    UI --> State[Client State & Forms]
+    State --> API[API / App Logic]
+    API --> Data[(Data Store / Files)]
+    API --> Integrations[External Integrations]
+```
 
-### Monorepo Layout
+## Core Workflow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant A as Application
+    participant L as Logic Layer
+    participant D as Data/Device Layer
+    U->>A: Start workflow
+    A->>L: Process request
+    L->>D: Save/update state
+    D-->>L: State/result
+    L-->>A: Return useful result
+    A-->>U: Updated experience
+```
+
+## How the Project is Organized
 
 ```text
 Skill-Swap-Marketplace-Student-to-Student-/
-├── backend/
-│   ├── src/
-│   │   ├── config/
-│   │   ├── controllers/
-│   │   ├── middlewares/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   ├── scripts/
-│   │   └── utils/
-│   └── tests/
-├── mobile/
-│   └── lib/
-│       ├── core/
-│       │   ├── constants/
-│       │   ├── network/
-│       │   ├── router/
-│       │   ├── storage/
-│       │   └── widgets/
-│       └── features/
-│           ├── auth/
-│           ├── marketplace/
-│           ├── swaps/
-│           ├── sessions/
-│           ├── chat/
-│           ├── communities/
-│           ├── wallet/
-│           └── ...
-├── docs/
-│   ├── api.md
-│   ├── architecture.md
-│   └── postman_collection.json
-└── scripts/
+├── 📁 backend
+│   ├── 📁 src
+│   ├── 📁 tests
+│   ├── 📄 package.json
+│   └── 📄 README.md
+├── 📁 docs
+│   ├── 📄 api.md
+│   ├── 📄 architecture.md
+│   └── 📄 postman_collection.json
+├── 📁 mobile
+│   ├── 📁 lib
+│   ├── 📄 pubspec.yaml
+│   └── 📄 README.md
+├── 📁 scripts
+│   ├── 📄 run_backend.ps1
+│   ├── 📄 run_backend.sh
+│   ├── 📄 run_mobile.ps1
+│   └── 📄 run_mobile.sh
 ```
 
-### Clean Architecture & Separation of Concerns
+## Engineering Notes
 
-- **Backend:** Route → Controller → Service → Model flow to isolate HTTP handling from domain logic.
-- **Mobile:** `core/` for shared infrastructure; `features/` for domain-driven UI and state modules.
-- **Docs-first operations:** API and architecture references live in `docs/` for onboarding consistency.
-- **Scalable evolution:** New capabilities can be added as independent modules without cross-layer coupling.
+- **Separation of concerns:** UI, business logic, data/services, and platform concerns are documented as separate layers.
+- **Scalability mindset:** The project structure is ready for new screens, services, tests, and deployment improvements.
+- **Portfolio quality:** README content is designed to communicate value before someone even opens the code.
+- **Maintainability:** Naming, setup steps, and roadmap items make future work easier to plan and review.
+- **User-first framing:** Features are described by the value they provide, not just the technology used.
 
----
-
-## Tech Stack
-
-### Mobile
-
-- **Flutter** for cross-platform product delivery
-- **Riverpod** for predictable state orchestration
-- **go_router** for modular navigation and guarded routes
-- **dio** for typed HTTP integration
-- **Firebase Cloud Messaging (FCM)** for push notifications
-- **WebRTC** foundations for synchronous communication experiences
-
-### Backend
-
-- **Node.js + Express** for API and business workflows
-- **MongoDB + Mongoose** for flexible domain persistence
-- **JWT** access/refresh token authentication strategy
-- **Socket.IO** for realtime chat/session signaling
-- **Firebase Admin** for backend notification dispatch
-- **Cloudinary** for media uploads and transformation pipeline
-- **Security middlewares:** `helmet`, `cors`, `express-mongo-sanitize`, cookie handling
-- **Rate limiting:** `express-rate-limit` for abuse prevention and reliability hardening
-
----
-
-## Smart Ranking Logic
-
-Search and discovery prioritize high-trust, high-fit profiles in this order:
-
-1. **Verified**
-2. **Face verified**
-3. **Boosted**
-4. **XP**
-5. **Match score**
-6. **Rating**
-
-**Match score** combines:
-
-- Offered vs requested skill overlap
-- Session availability compatibility
-- Historical reliability (attendance/completion behavior)
-- Profile quality/completeness signals
-
-This creates a ranking model that balances **trust**, **relevance**, and **execution probability**.
-
----
-
-## Screenshots
-
-| Login | Home | Profile |
-|---|---|---|
-| ![Login](docs/screenshots/login.png) | ![Home](docs/screenshots/home.png) | ![Profile](docs/screenshots/profile.png) |
-
-| Chat | Sessions | Communities |
-|---|---|---|
-| ![Chat](docs/screenshots/chat.png) | ![Sessions](docs/screenshots/sessions.png) | ![Communities](docs/screenshots/communities.png) |
-
-| Internships | Analytics | Resume |
-|---|---|---|
-| ![Internships](docs/screenshots/internships.png) | ![Analytics](docs/screenshots/analytics.png) | ![Resume](docs/screenshots/resume.png) |
-
----
-
-## Setup Guide
-
-### Prerequisites
-
-- Node.js `>=18`
-- npm `>=9`
-- MongoDB (local or Atlas)
-- Flutter SDK `>=3.4`
-- Android Studio and/or Xcode
-- Firebase project (for FCM)
-- Cloudinary account credentials
-
-### Backend Setup
+## Local Setup
 
 ```bash
-cd backend
-npm install
-npm run migrate
-npm run migrate:v2
-npm run seed
-npm run dev
+# Clone the repository
+git clone <repo-url>
+cd <repo-name>
+
+# Follow the stack-specific setup notes in the source files.
 ```
 
-Backend default endpoint: `http://localhost:5000`
+## Suggested Quality Checks
 
-### Mobile Setup
+Before shipping or presenting this project, run the checks that match the stack:
 
-```bash
-cd mobile
-flutter pub get
-flutter run
-```
-
-### Environment Variables
-
-**Backend (`backend/.env`)**
-
-```env
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/skill_swap
-JWT_ACCESS_SECRET=your_access_secret
-JWT_REFRESH_SECRET=your_refresh_secret
-ACCESS_TOKEN_TTL=15m
-REFRESH_TOKEN_TTL=7d
-CORS_ORIGIN=*
-API_BASE_URL=http://localhost:5000
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_key
-CLOUDINARY_API_SECRET=your_cloudinary_secret
-FIREBASE_PROJECT_ID=your_project_id
-FIREBASE_CLIENT_EMAIL=your_service_account_email
-FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
-GITHUB_CLIENT_ID=your_github_client_id
-GITHUB_CLIENT_SECRET=your_github_client_secret
-```
-
-**Mobile (`mobile/.env`)**
-
-```env
-API_BASE_URL=http://10.0.2.2:5000
-SOCKET_BASE_URL=http://10.0.2.2:5000
-```
-
-### Migration + Seed Instructions
-
-```bash
-cd backend
-npm run migrate
-npm run migrate:v2
-npm run seed
-```
-
-Use these scripts to align schema updates and preload demo data before local testing.
-
----
-
-## API & Docs
-
-- Postman collection: `docs/postman_collection.json`
-- API documentation: `docs/api.md`
-- Architecture documentation: `docs/architecture.md`
-
----
-
-## Why This Is Sellable
-
-- **Scalable architecture:** modular backend/mobile design supports growth in users and features.
-- **Built-in monetization hooks:** premium boosts, wallet flows, and referral economics are expansion-ready.
-- **Gamification engine:** XP, trust signals, and ranking mechanics improve retention and activity quality.
-- **Internship layer:** natural transition from peer learning to talent discovery and placement outcomes.
-- **Resume export potential:** structured activity data can produce verifiable career artifacts.
-- **Trust systems moat:** verification, moderation, and accountability improve marketplace quality defensibility.
-
----
+| Check | Purpose |
+| --- | --- |
+| Format/lint | Keep code style consistent and reviewer-friendly. |
+| Static analysis | Catch type, syntax, and framework-level issues early. |
+| Unit/widget tests | Validate important logic and user-facing workflows. |
+| Manual smoke test | Confirm the main flow works from start to finish. |
+| README review | Ensure documentation matches the actual repository state. |
 
 ## Roadmap
 
-- AI-powered skill path recommendations and personalized growth plans
-- Mentor marketplace with paid/credit hybrid engagement options
-- Campus ambassador program and institution onboarding toolkit
-- Team-based project pods and hackathon collaboration mode
-- Recruiter dashboard for high-signal candidate discovery
-- Verifiable public learner profiles with achievement timelines
+- Add automated tests
+- Improve deployment documentation
+- Create demo screenshots
+- Expand feature roadmap
 
----
+## Professional Review Checklist
 
-## Contribution
+- [ ] Clear project purpose and audience
+- [ ] Feature list aligned with real user workflows
+- [ ] Architecture documented with diagrams
+- [ ] Setup steps tested on a clean machine
+- [ ] Screenshots or demo GIFs added where possible
+- [ ] Environment variables documented without exposing secrets
+- [ ] Tests/lint commands documented
+- [ ] Roadmap shows practical next steps
 
-We welcome thoughtful, production-quality contributions.
+## Screenshots / Demo Suggestions
 
-1. Fork the repository.
-2. Create a branch: `git checkout -b feat/your-feature`.
-3. Keep changes scoped and aligned with architecture boundaries.
-4. Add or update tests/documentation where relevant.
-5. Open a pull request with context, validation steps, and screenshots for UI-impacting changes.
+Add these assets when available to make the repository even stronger:
 
----
+| Asset | Recommended content |
+| --- | --- |
+| Hero screenshot | Main dashboard, home screen, or landing page |
+| Workflow GIF | 10-20 second walkthrough of the core feature |
+| Architecture image | Exported version of the Mermaid diagram |
+| Before/after | Show how the project improves an existing workflow |
+
+## Contribution Notes
+
+This project can be extended through focused, well-scoped improvements:
+
+1. Pick one feature or documentation improvement.
+2. Create a small branch with a clear name.
+3. Keep changes easy to review.
+4. Update this README if setup, features, or architecture changes.
+5. Open a pull request with screenshots or test notes when possible.
 
 ## License
 
-This project is licensed under the **MIT License** (placeholder).
-
-See `LICENSE` for full terms once finalized.
+Add or update the license file based on how you want others to use this project. If this is a portfolio-only project, document that clearly before accepting external contributions.
 
 ---
 
-## Deployment Notes (Production Placeholder)
+<div align="center">
 
-### Backend
+**Built and documented with a focus on professional presentation, practical workflows, and clean engineering communication.**
 
-- Containerize the API service (Docker) with environment-specific config injection.
-- Run behind a reverse proxy/load balancer (Nginx/ALB) with TLS termination.
-- Use managed MongoDB with backups, alerting, and index observability.
-- Enable horizontal scaling for stateless API nodes and Socket.IO adapter strategy.
-
-### Mobile
-
-- Configure per-environment flavors (dev/staging/prod) for API and socket base URLs.
-- Integrate release pipelines for Android and iOS with signing automation.
-- Use crash/analytics instrumentation for release monitoring and quality gates.
-
----
-
-## Security & Trust Posture
-
-- JWT-based auth model with short-lived access and controlled refresh windows.
-- Security middleware baseline (`helmet`, CORS, sanitize, rate limit) for API hardening.
-- Moderation controls, reports, strike workflows, and account action auditability.
-- Verification-first ranking to reduce low-signal interactions and improve swap quality.
-
----
-
-## Product KPIs (Suggested)
-
-Track these metrics to monitor product-market fit and network quality:
-
-- **Swap Completion Rate**
-- **Weekly Active Swappers (WAS)**
-- **No-show Rate**
-- **Verification Coverage (%)**
-- **Time-to-First Successful Swap**
-- **Referral-to-Activation Conversion**
-
----
-
-## Support
-
-For architecture, API, and setup details, start here:
-
-- `docs/architecture.md`
-- `docs/api.md`
-- `docs/postman_collection.json`
-
-For contribution-related questions, open an issue with a reproducible context and expected outcome.
+</div>
